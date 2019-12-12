@@ -8,7 +8,29 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+   
+    var pr = [
+        
+        ["Name":"Urvi","Class":"ios"],
+        ["Name":"Poonam","Class":"ios"],
+        ["Name":"Nil","Class":"ios"]
+    
+    ]
+    
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return pr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell" , for: indexPath )
+        cell.textLabel?.text = pr[indexPath.row]["Name"]
+        cell.detailTextLabel?.text = pr[indexPath.row]["Class"]
+        return cell
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
